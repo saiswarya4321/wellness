@@ -12,10 +12,14 @@ import Root from './Components/Root.jsx';
 import Login from './Pages/Login.jsx';
 import Home from './Pages/Home.jsx';
 import Dashboard from './Pages/Dashboard.jsx';
-import Mysessions from './Pages/Mysessions.jsx';
-import Sessioneditor from './Pages/SessionEditor.jsx';
-import CreateNew from './Pages/CreateNew.jsx';
+
+
+
 import { Toaster } from 'react-hot-toast';
+import New from './Pages/New.jsx';
+import Mysession from './Pages/Mysession.jsx';
+import Sessioneditors from './Pages/Sessioneditors.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -27,16 +31,16 @@ const router = createBrowserRouter([
       element:<Dashboard/>
     },
     {
-path:"mysessions",
-      element:<Mysessions/>
+path:"mysession",
+      element:<Mysession/>
     },
     {
-path:"sessioneditor/:id",
-      element:<Sessioneditor/>
+path:"sessioneditors/:id",
+      element:<Sessioneditors/>
     },
     {
-path:"createnew",
-      element:<CreateNew/>
+path:"new",
+      element:<New/>
     },
   ]
   },

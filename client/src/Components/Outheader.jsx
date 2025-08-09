@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function OuterHeader() {
+function Outheader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -33,4 +33,4 @@ function OuterHeader() {
   );
 }
 
-export default OuterHeader;
+export default Outheader;

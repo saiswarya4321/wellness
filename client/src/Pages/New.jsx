@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-const CreateNew = () => {
+const New = () => {
   const token = localStorage.getItem("token");
     const autoSaveTimer = useRef(null);
     const [savedSessionId, setSavedSessionId] = useState(null);
@@ -161,4 +161,4 @@ const [formErrors, setFormErrors] = useState({ title: "", tags: "" })
   );
 };
 
-export default CreateNew;
+export default New;

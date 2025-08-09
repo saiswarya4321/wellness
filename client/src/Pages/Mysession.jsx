@@ -3,7 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-function MySessions() {
+function Mysession() {
   const token=localStorage.getItem("token")
   const baseURL = import.meta.env.VITE_API_BASE_URL;
   const [mySessions, setMySessions] = useState([]);
@@ -46,7 +46,7 @@ const published = mySessions.filter(s => s.status === "published");
   return (
     <div className='pt-20 pl-4 pr-4 pb-4 bg-gray-100 min-h-screen'>
       <h1 className='text-gray-600 text-2xl font-bold mb-4'>My Sessions</h1>
-      <Link to="/dashboard/createnew">
+      <Link to="/dashboard/new">
   <button className='bg-green-500 text-white text-sm font-bold p-2 rounded'>
     + Create New
   </button>
@@ -57,7 +57,7 @@ const published = mySessions.filter(s => s.status === "published");
     <li key={session._id} className='p-2 bg-white rounded shadow flex-1 min-w-[100px] sm:min-w-[150px]  sm:basis-[20%] md:basis-[25%] lg:basis-[20%]'>
       <h3 className='font-bold'>{session.title}</h3>
       <p>Tags: {session.tags.join(', ')}</p>
-      <Link to={`/dashboard/sessioneditor/${session._id}`} className='text-blue-500 underline'>Edit</Link>
+      <Link to={`/dashboard/sessioneditors/${session._id}`} className='text-blue-500 underline'>Edit</Link>
     </li>
   ))}
 </ul>
@@ -68,7 +68,7 @@ const published = mySessions.filter(s => s.status === "published");
     <li key={session._id} className='p-4 bg-white rounded shadow flex-1  min-w-[150px]  sm:basis-[20%] md:basis-[25%] lg:basis-[20%]'>
       <h3 className='font-bold'>{session.title}</h3>
       <p>Tags: {session.tags.join(', ')}</p>
-      <Link to={`/dashboard/sessioneditor/${session._id}`} className='text-green-600 underline'>View / Edit</Link>
+      <Link to={`/dashboard/sessioneditors/${session._id}`} className='text-green-600 underline'>View / Edit</Link>
     </li>
   ))}
 </ul>
@@ -77,4 +77,4 @@ const published = mySessions.filter(s => s.status === "published");
   );
 }
 
-export default MySessions;
+export default Mysession;

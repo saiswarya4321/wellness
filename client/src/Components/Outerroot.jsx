@@ -1,12 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Outerheader from './OuterHeader'
+
 import Footer from './Footer'
+import Outheader from './Outheader'
 
 function Outerroot() {
   return (
     <div>
-      <Outerheader/>
+      <Outheader/>
       <Outlet/>
       <Footer/>
     </div>

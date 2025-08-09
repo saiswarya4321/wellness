@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-const SessionEditor = () => {
+const Sessioneditors = () => {
   const autoSaveTimer = useRef(null); 
   const { id } = useParams(); // session ID from URL
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ const SessionEditor = () => {
       const token = localStorage.getItem("token")
       await axios.post(`${baseURL}/session/my-sessions/save-draft`, { ...session, _id: id }, { withCredentials: true, headers: { Authorization: token } });
      
-      navigate('/dashboard/mysessions');
+      navigate('/dashboard/mysession');
        toast.success('Draft saved');
     } catch (err) {
       console.error(err);
@@ -71,7 +71,7 @@ const SessionEditor = () => {
       const token = localStorage.getItem("token")
       await axios.post(`${baseURL}/session/my-sessions/publish`, { ...session,_id: id }, { withCredentials: true, headers: { Authorization: token } });
       toast.success("Session published");
-      navigate('/dashboard/mysessions'); 
+      navigate('/dashboard/mysession'); 
     } catch (err) {
       console.error(err);
       toast.error('Error publishing session');
@@ -121,4 +121,4 @@ const SessionEditor = () => {
   );
 };
 
-export default SessionEditor;
+export default Sessioneditors;
