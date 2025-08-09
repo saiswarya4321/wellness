@@ -102,7 +102,7 @@ const [formErrors, setFormErrors] = useState({ title: "", tags: "" })
 
     autoSaveTimer.current = setTimeout(() => {
       autoSaveDraft();
-    }, 9000); // 5 sec after last input
+    }, 5000); // 5 sec after last input
 
     return () => clearTimeout(autoSaveTimer.current);
   }, [session]);
