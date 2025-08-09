@@ -49,6 +49,11 @@ Frontend example:
 VITE_API_BASE_URL=http://localhost:5000
 
 Live Link
+frontend
 
-Video Walkthrough
+backend
+https://wellness-backend-abcx.onrender.com
 Video Link
+
+Git Link 
+https://github.com/saiswarya4321/wellness.git
