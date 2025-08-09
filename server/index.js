@@ -12,16 +12,25 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://wellness-9d4q.onrender.com"  
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  origin: ["http://localhost:5173", "https://wellness-9d4q.onrender.com"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true // allow cookies and credentials
 }));
 
+
+// Explicitly handle preflight requests for all routes
+app.options(/.*/, cors({
+  origin: [
+    "http://localhost:5173",
+    "https://wellness-9d4q.onrender.com"
+  ],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
+
 // Test Route
-app.get("/wellness", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Server is running");
 });
 connectDB();

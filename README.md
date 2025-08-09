@@ -43,14 +43,13 @@ PORT=5004
 MONGO_URI=mongodb+srv://your-mongo-uri
 JWT_SECRET=your-secret
 CLIENT_URL=http://localhost:5173
+
 Frontend example:
-
-
 VITE_API_BASE_URL=http://localhost:5000
 
 Live Link
 frontend
-
+https://wellness-9d4q.onrender.com
 backend
 https://wellness-backend-abcx.onrender.com
 Video Link
