@@ -63,7 +63,7 @@ const [formErrors, setFormErrors] = useState({ title: "", tags: "" })
       );
 
       toast.success('Session published successfully');
-      navigate('/dashboard/mysessions');
+      navigate('/dashboard/mysession');
     } catch (err) {
       console.error(err);
       toast.error('Error publishing session');
@@ -102,7 +102,7 @@ const [formErrors, setFormErrors] = useState({ title: "", tags: "" })
 
     autoSaveTimer.current = setTimeout(() => {
       autoSaveDraft();
-    }, 5000); // 5 sec after last input
+    }, 20000); // 5 sec after last input
 
     return () => clearTimeout(autoSaveTimer.current);
   }, [session]);
