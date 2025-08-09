@@ -1,0 +1,61 @@
+import React from 'react'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {toast} from 'react-hot-toast'
+import axios from 'axios'
+
+function Signup() {
+    const baseURL = import.meta.env.VITE_API_BASE_URL;
+    const navigate=useNavigate()
+    console.log("baseurl",baseURL)
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    })
+    const handleChange=(e)=>{
+        setFormData(prev=>({
+            ...prev,[e.target.name]:e.target.value
+        }));
+    }
+
+const handleSubmit=async (e)=>{
+e.preventDefault();
+if (!formData.email || !formData.password) {
+      toast.error("Email and password are required");
+      return;
+    }
+
+    try {
+      const res = await axios.post(`${baseURL}/users/register`, formData,{
+        withCredentials:true
+      });
+      toast.success(res.data.message);
+console.log(res.data.token)
+      // Optionally store token
+      localStorage.setItem('token', res.data.token);
+
+      // Redirect after successful registration
+      navigate('/dashboard');
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.message || "Something went wrong");
+    }
+}
+
+    return (
+        <div className='min-h-screen p-2 flex justify-center items-center bg-gray-100'>
+
+            <form onSubmit={handleSubmit} className='max-w-md bg-white flex flex-col gap-3 p-2 items-center shadow rounded min-w-[300px]  md:min-w-[450px] '>
+                <h2 className='text-gray-500 font-bold p-2 text-2xl'>Join us</h2>
+                <input onChange={handleChange} value={formData.email} type='email' name='email' required placeholder='Email' className='p-2 focus:outline-none border border-gray-300 w-full rounded-xl' />
+                <input onChange={handleChange} value={formData.password} type='password' name='password' required placeholder='Password' className='p-2 focus:outline-none border border-gray-300 w-full rounded-xl' />
+                <button type='submit' className='bg-amber-600 text-white font-bold p-2 rounded sm:w-[100px]'>Signup</button>
+
+                <Link to={'/login'} className='text-gray-500 text-xs font-bold'>Already have an account</Link>
+            </form>
+
+        </div>
+    )
+}
+
+export default Signup
