@@ -31,9 +31,7 @@ function Login() {
     }
 
     try {
-      const res = await axios.post(`${baseURL}/users/login`, formData, {
-        withCredentials: true
-      });
+      const res = await axios.post(`${baseURL}/users/login`, formData);
 
       toast.success(res.data.message || "Login successful");
       console.log("Token:", res.data.token);

@@ -22,7 +22,7 @@ function Mysession() {
       });
 
       const res = await axios.get(`${baseURL}/session/my-sessions`, {
-        withCredentials: true,
+      
         headers: {
           Authorization: token
         }
@@ -67,7 +67,7 @@ const published = mySessions.filter(s => s.status === "published");
   {published.map(session => (
     <li key={session._id} className='p-4 bg-white rounded shadow flex-1  min-w-[150px]  sm:basis-[20%] md:basis-[25%] lg:basis-[20%]'>
       <h3 className='font-bold'>{session.title}</h3>
-      <p>Tags: {session.tags.join(', ')}</p>
+      <p> {session.tags.join(', ')}</p>
       <Link to={`/dashboard/sessioneditors/${session._id}`} className='text-green-600 underline'>View / Edit</Link>
     </li>
   ))}

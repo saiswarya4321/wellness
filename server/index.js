@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
 const router = require("./Routes/userRoutes");
 const session_router = require("./Routes/sessionRoutes");
@@ -8,37 +7,29 @@ require("dotenv").config();
 
 const app = express();
 
-// Middleware
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors({
-  origin: ["http://localhost:5173", "https://wellness-9d4q.onrender.com"],
+const corsOptions = {
+  origin: ["https://wellness-9d4q.onrender.com", "http://localhost:5173"], 
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true // allow cookies and credentials
-}));
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+
+app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 
 
-// Explicitly handle preflight requests for all routes
-app.options(/.*/, cors({
-  origin: [
-    "http://localhost:5173",
-    "https://wellness-9d4q.onrender.com"
-  ],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
 
+app.use(express.json());
 
-// Test Route
 app.get("/", (req, res) => {
-    res.send("Server is running");
+  res.send("Server is running");
 });
-connectDB();
-app.use("/users",router)
-app.use("/session",session_router)
 
-// Start Server
+connectDB();
+
+app.use("/users", router);
+app.use("/session", session_router);
+
 const PORT = process.env.PORT || 5004;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

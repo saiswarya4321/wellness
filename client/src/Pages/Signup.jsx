@@ -26,9 +26,7 @@ if (!formData.email || !formData.password) {
     }
 
     try {
-      const res = await axios.post(`${baseURL}/users/register`, formData,{
-        withCredentials:true
-      });
+      const res = await axios.post(`${baseURL}/users/register`, formData);
       toast.success(res.data.message);
 console.log(res.data.token)
       // Optionally store token

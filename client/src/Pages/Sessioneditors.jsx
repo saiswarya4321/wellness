@@ -21,7 +21,7 @@ const Sessioneditors = () => {
     const fetchSession = async () => {
       try {
        
-        const res = await axios.get(`${baseURL}/session/my-sessions/${id}`, { withCredentials: true, headers: { Authorization: token } });
+        const res = await axios.get(`${baseURL}/session/my-sessions/${id}`, {  headers: { Authorization: token } });
         setSession(res.data);
       } catch (err) {
         console.error(err);
@@ -55,7 +55,7 @@ const Sessioneditors = () => {
   const handleSaveDraft = async () => {
     try {
       const token = localStorage.getItem("token")
-      await axios.post(`${baseURL}/session/my-sessions/save-draft`, { ...session, _id: id }, { withCredentials: true, headers: { Authorization: token } });
+      await axios.post(`${baseURL}/session/my-sessions/save-draft`, { ...session, _id: id }, {  headers: { Authorization: token } });
      
       navigate('/dashboard/mysession');
        toast.success('Draft saved');
@@ -69,7 +69,7 @@ const Sessioneditors = () => {
   const handlePublish = async () => {
     try {
       const token = localStorage.getItem("token")
-      await axios.post(`${baseURL}/session/my-sessions/publish`, { ...session,_id: id }, { withCredentials: true, headers: { Authorization: token } });
+      await axios.post(`${baseURL}/session/my-sessions/publish`, { ...session,_id: id }, {  headers: { Authorization: token } });
       toast.success("Session published");
       navigate('/dashboard/mysession'); 
     } catch (err) {

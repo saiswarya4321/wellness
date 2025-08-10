@@ -57,7 +57,7 @@ const [formErrors, setFormErrors] = useState({ title: "", tags: "" })
           json_file_url: session.json_file_url,
         },
         {
-          withCredentials: true,
+          
           headers: { Authorization: token }
         }
       );
@@ -81,7 +81,7 @@ const [formErrors, setFormErrors] = useState({ title: "", tags: "" })
           _id: savedSessionId, // send _id if exists, to update
         },
         {
-          withCredentials: true,
+          
           headers: { Authorization: token }
         }
       );

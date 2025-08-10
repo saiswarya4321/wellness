@@ -47,12 +47,11 @@ CLIENT_URL=http://localhost:5173
 Frontend example:
 VITE_API_BASE_URL=http://localhost:5000
 
-Live Link
-frontend
+Live Link frontend
 https://wellness-9d4q.onrender.com
 backend
 https://wellness-backend-abcx.onrender.com
 Video Link
-
+https://drive.google.com/drive/folders/1CPsfUbD94-tI2ezqgfQ1tIqquPxBfQRV?usp=sharing
 Git Link 
 https://github.com/saiswarya4321/wellness.git
